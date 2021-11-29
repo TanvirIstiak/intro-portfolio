@@ -31,7 +31,12 @@ img{
     display: flex;
     justify-content: space-between;
     position: fixed;
-    
+}
+
+.hambergur-menu{
+    visibility: none;
+    display: none;
+    height: 35px;
 }
 
 .navigation__logo{
@@ -48,12 +53,21 @@ img{
     color: var(--nav-hover-color);
 }
 
+.navigation__list{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* position: relative; */
+}
+
 
 
 .list-item a{
     text-decoration: none;
     text-transform: uppercase;
     color: var(--light-black);
+    /* position: relative; */
 }
 
 .list-item+.list-item{
@@ -61,16 +75,27 @@ img{
     margin-right: .5em;
 }
 
-.list-item a:hover{
-    color: var(--nav-hover-color)
+.list-item{
+    position: relative;
 }
 
-.navigation__list{
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.list-item::after{
+    content: "";
+    height: 4px;
+    width: 0;
+    background-color: gold;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    transition: all .4s;
 }
+
+.list-item:hover::after {
+    color: var(--nav-hover-color);
+    width: 100%;
+}
+
+
 
 
 .container{
@@ -92,8 +117,13 @@ img{
     background-color: #f0eded;
 }
 
+.myimg{
+    animation: borderanimation 5s 2;
+}
+
 .myimg:hover{
-    border: 2px;
+    /* border: 2px; */
+    
     border-radius: 2px solid black;
     box-shadow: 0 2px 5px black;
 }
@@ -107,12 +137,67 @@ img{
     background-color: #bdb086;
 }
 
+button{
+    position: relative;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: .5em 1em;
+    background-color: transparent;
+    
+}
+
+/* button:hover .span{
+    width: 100%;
+    transition: 2s;
+} */
+
+.span{
+    position: absolute;
+    background: goldenrod;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid ;
+    border-radius: 30px;
+    z-index: -1;
+}
+
+/* .container p a:hover.span{
+    width: 100%;
+    transition: 1s;
+} */
+
 .section-four{
     background-color: var(--nav-bg);
 }
+
+@keyframes borderanimation{
+    /* 0%{border:1px solid red;opacity: 0;}
+    25%{border:1px solid red;opacity: .3;}
+    50%{border:1px solid red;opacity: .5;}
+    100%{border:1px solid red;opacity: 1;} */
+    /* 0%{bottom: ;} */
+
+}
+
+
 
 @media (max-width:600px) {
     .row{
         display: block;
     }  
+}
+
+@media (max-width: 650px) {
+    .hambergur-menu{
+        display: block;
+    }
+
+    .list-item{
+        display: none;
+        
+    }
+    
 }
